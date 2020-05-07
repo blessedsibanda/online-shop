@@ -1,0 +1,74 @@
+{% extends 'shop/base.html' %}
+
+{% load static %}
+
+{% block title %}
+    {% if category %}{{ category.name }}{% else %}Products{% endif %}
+{% endblock title %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4 col-lg-3 d-none d-md-block">
+            <div class="border border-secondary py-4 px-3">
+                <h5 class="mb-4" >Categories</h5>
+                <ul class="list-group list-group-flush">
+                    <a class="list-group-item list-group-item-action {% if not category %}active bg-info{% endif %}" href="{% url 'shop:product_list' %}">All</a>
+                    {% for c in categories %}
+                        <a class="list-group-item list-group-item-action {% if category.slug == c.slug %}active bg-info{% endif %}" href="{{ c.get_absolute_url }}">
+                        {{ c.name }}
+                        </a>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-8 col-lg-9">
+            <div class="row">
+                <div class="accordion" id="accordionExample">
+                    <div>
+                        <div id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Browse Categories <i class="fa fa-arrow-down"></i>
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div>
+                                <ul class="list-group list-group-horizontal d-flex">
+                                    <a class="list-group-item list-group-item-action {% if not category %}active bg-info{% endif %}" href="{% url 'shop:product_list' %}">All</a>
+                                    {% for c in categories %}
+                                        <a class="list-group-item list-group-item-action {% if category.slug == c.slug %}active bg-info{% endif %}" href="{{ c.get_absolute_url }}">
+                                        {{ c.name }}
+                                        </a>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+            <div class="row">
+                <h2 class="ml-1">
+                {% if category %}{{ category.name }}{% else %}All Products{% endif %}
+                </h2>
+            </div>
+            <div class="row">
+                {% for product in products %}
+                    <div class="col-sm-6 col-lg-4 p-1">
+                        <div class="card">
+                            <img class="img-fluid" style="height: 190px; object-fit: contain;" src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <a href="{{product.get_absolute_url}}">
+                                <h5 class="card-title text-info">{{ product.name }}</h5></a>
+                                <p class="card-text">${{product.price}}</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

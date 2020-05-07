@@ -1,0 +1,21 @@
+{
+  "name": "online-shop",
+  "version": "1.0.0",
+  "description": "An online-shop using django ",
+  "main": "\"\"",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "django",
+    "python"
+  ],
+  "author": "Blessed Sibanda",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.16.1"
+  }
+}
