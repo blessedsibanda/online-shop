@@ -25,7 +25,12 @@
                 {% for product in products %}
                     <div class="col-sm-6 col-lg-4 p-2">
                         <div class="card rounded-lg bg-light shadow-sm border product">
-                            <img class="img-fluid product-image" style="height: 190px; object-fit: contain;" src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" class="card-img-top" alt="{{ product.name }} image">
+                            <a href="{{ product.get_absolute_url }}" class="d-flex justify-content-center">
+                                <img class="img-fluid product-image" 
+                                    style="height: 190px; object-fit: contain;" 
+                                    src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}"
+                                    alt="{{ product.name }} image">
+                            </a>
                             <div class="card-body">
                                 <a href="{{product.get_absolute_url}}">
                                 <h5 class="card-title">{{ product.name }}</h5></a>

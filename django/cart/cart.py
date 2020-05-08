@@ -49,7 +49,7 @@ class Cart(object):
         the database.
         """
         product_ids = self.cart.keys()
-        products = Product.object.filter(product__in=product_ids)
+        products = Product.objects.filter(id__in=product_ids)
         cart = self.cart.copy()
         for product in products:
             cart[str(product.id)]['product'] = product
