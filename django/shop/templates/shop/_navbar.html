@@ -13,7 +13,17 @@
                 <li class="nav-item {% if request.path == '/cart/' %}active{% endif %}" >
                     <a href="{% url 'cart:cart_detail' %}" class="nav-link">
                         <i class="fa fa-shopping-cart mr-1" style="font-size: 1.3rem;">
-                            <span class="badge badge-danger badge-pill" style="font-size: 0.7rem;">0</span>
+                            {% with total_items=cart|length  %}
+                                <span class="badge badge-danger badge-pill" style="font-size: 0.7rem;">
+                                    {{ total_items }}
+                                </span>
+
+                                {% if total_items > 0 %}
+                                    <span class="badge badge-light" style="font-size: 0.9rem;">
+                                    ${{cart.get_total_price}}
+                                </span>
+                                {% endif %}
+                            {% endwith %}
                         </i>
                     </a>
                 </li>
