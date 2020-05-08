@@ -25,8 +25,12 @@ def product_detail(request, id, slug):
                                 id=id,
                                 slug=slug,
                                 available=True)
+    categories = Category.objects.all()
+    total_products = Product.objects.count()
     return render(request,
                   'shop/product/detail.html',
                   {
-                      'product': product
+                      'product': product,
+                      'categories': categories,
+                      'total_products': total_products
                   })

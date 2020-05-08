@@ -1,0 +1,20 @@
+<div class="accordion" id="accordionExample">
+    <div>
+        <div id="headingOne">
+            <button class="btn btn-success btn-block" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Browse Categories <i class="fa fa-arrow-circle-down"></i>
+            </button>
+        </div>
+
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="btn-group p-2 d-flex flex-wrap" >
+                <a class="btn btn-secondary m-1 {% if not category %}btn-success{% endif %}" href="{% url 'shop:product_list' %}">All</a>
+                {% for c in categories %}
+                    <a class="btn btn-secondary m-1 {% if category.slug == c.slug %}btn-success{% endif %}" href="{{ c.get_absolute_url }}">
+                    {{ c.name }}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div> 
+</div>
