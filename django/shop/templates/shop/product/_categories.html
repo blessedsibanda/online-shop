@@ -1,18 +1,18 @@
 <div class="card bg-light border">
     <h5 class="mb-0 card-header" >Categories</h5>
     <ul class="list-group list-group-flush px-0">
-        <a class="list-group-item border-0 list-group-item-action d-flex justify-content-between {% if not category %}active bg-success{% endif %}" href="{% url 'shop:product_list' %}">All
+        <a class="list-group-item border-0 list-group-item-action d-flex justify-content-between {% if not category %}active bg-primary{% endif %}" href="{% url 'shop:product_list' %}">All
 
         {% if category %}
-            <span class="badge badge-success small">{{ total_products }}</span>
+            <span class="badge badge-primary small">{{ total_products }}</span>
         {% endif %}
         </a>
         {% for c in categories %}
-            <a class="list-group-item border-0 list-group-item-action d-flex justify-content-between {% if category.slug == c.slug %}active bg-success{% endif %}" href="{{ c.get_absolute_url }}">
+            <a class="list-group-item border-0 list-group-item-action d-flex justify-content-between {% if category.slug == c.slug %}active bg-primary{% endif %}" href="{{ c.get_absolute_url }}">
             {{ c.name }}
 
             {% if category.slug != c.slug %}
-                <span class="badge badge-success small">{{ c.products.count }}</span>
+                <span class="badge badge-primary small">{{ c.products.count }}</span>
             {% endif %}
             </a>
         {% endfor %}

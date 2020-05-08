@@ -8,7 +8,7 @@
   transform: scale(1.17);
 }
 .product a {
-  color: var(--success);
+  color: var(--primary);
   transition: all 0.2s ease;
 }
 
