@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # third-party
     'crispy_forms',
+    'django_celery_results',
 
     # local
     'shop.apps.ShopConfig',
@@ -134,3 +135,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 CART_SESSION_ID = 'cart'
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'django-db'
