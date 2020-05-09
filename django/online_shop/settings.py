@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
+import braintree
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
+    'payment.apps.PaymentConfig',
 ]
 
 MIDDLEWARE = [
@@ -140,3 +142,15 @@ CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'django-db'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Braintree settings
+BRAINTREE_MERCHANT_ID = 'zx3jwghq466sc67p'
+BRAINTREE_PUBLIC_KEY = 'v6rb2jfmxsz549ss'
+BRAINTREE_PRIVATE_KEY = 'a6daeb9a4c0611ba366656134c21fcb6'
+
+BRAINTREE_CONF = braintree.Configuration(
+    braintree.Environment.Sandbox,
+    BRAINTREE_MERCHANT_ID,
+    BRAINTREE_PUBLIC_KEY,
+    BRAINTREE_PRIVATE_KEY
+)
