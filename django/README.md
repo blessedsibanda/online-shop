@@ -10,6 +10,7 @@
 
 ```
 python3 -m venv venv
+
 source venv/bin/activate
 ```
 
@@ -31,14 +32,18 @@ source venv/bin/activate
 (venv) python manage.py runserver
 ```
 
+Open browser at http://127.0.0.1:8000 to view the app
+
 - Open a new terminal (with same working directory), activate virtual environment and run celery (make sure redis is running)
 
 ```
 (venv) celery -A online_shop worker -l info
 ```
 
-- Open another terminal (with same working directory), activate virtual environment and run flower(to monitor celery)
+- Open another terminal (with same working directory), activate virtual environment and run flower (to monitor celery)
 
 ```
 (venv) celery -A online_shop flower
 ```
+
+Open browser at http://127.0.0.1:5555 to view the flower dashboard
