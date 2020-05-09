@@ -24,6 +24,7 @@ def payment_process(request):
                 'submit_for_settlement': True
             }
         })
+
         if result.is_success:
             # mark the order as paid
             order.paid = True
